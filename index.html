@@ -104,14 +104,14 @@
         </form>
     </div>
     <script>
-        // Set up Three.js scene
+        // Configurar la escena de Three.js
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(renderer.domElement);
 
-        // Function to create different geometries based on RGB values
+        // Función para crear diferentes geometrías según los valores RGB
         function createGeometry(red, green, blue) {
             if (red > green && red > blue) {
                 return new THREE.BoxGeometry(); // Cubo para rojo
@@ -122,11 +122,40 @@
             }
         }
 
-        // Initial geometry and material
+        // Geometría y material inicial
         let geometry = new THREE.BoxGeometry();
-        const material = new THREE.MeshBasicMaterial({ color: 0x000000 }); // Default color: black
+        const material = new THREE.MeshBasicMaterial({ color: 0x000000 }); // Color predeterminado: negro
         let mesh = new THREE.Mesh(geometry, material);
         scene.add(mesh);
 
-        // Position the camera
-        camera
+        // Posicionar la cámara
+        camera.position.z = 5;
+
+        // Función de animación
+        function animate() {
+            requestAnimationFrame(animate);
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Manejar eventos del formulario
+        document.getElementById('quiz-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Obtener los valores del formulario
+            const formData = new FormData(event.target);
+            const values = Array.from(formData.values()).map(Number);
+            
+            const red = values.slice(0, 7).reduce((a, b) => a + b, 0);
+            const green = values.slice(7, 14).reduce((a, b) => a + b, 0);
+            const blue = values.slice(14, 21).reduce((a, b) => a + b, 0);
+            
+            // Actualizar la geometría del objeto
+            scene.remove(mesh);
+            geometry = createGeometry(red, green, blue);
+            mesh = new THREE.Mesh(geometry, material);
+            scene.add(mesh);
+        });
+    </script>
+</body>
+</html>
