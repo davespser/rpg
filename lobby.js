@@ -1,39 +1,32 @@
 // lobby.js
 
-// Importa las funciones necesarias de cuestionario.js
-import { loadQuizScene } from './cuestionario.js';
+// Configurar Three.js y la escena inicial
+// Asegúrate de que Three.js esté cargado globalmente
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('canvas') });
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
 
-// Función que se ejecuta cuando se carga la escena de lobby
-export function loadLobbyScene() {
-    // Crea el contenedor para la interfaz de lobby
-    const lobbyContainer = document.createElement('div');
-    lobbyContainer.id = 'lobby-container';
-    document.body.appendChild(lobbyContainer);
+// Crear un cubo básico
+const geometry = new THREE.BoxGeometry();
+const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+const cube = new THREE.Mesh(geometry, material);
+scene.add(cube);
 
-    // Título del lobby
-    const title = document.createElement('h1');
-    title.innerText = 'Bienvenido al Juego';
-    lobbyContainer.appendChild(title);
+// Ajustar la posición de la cámara
+camera.position.z = 5;
 
-    // Botón para empezar el juego
-    const startButton = document.createElement('button');
-    startButton.innerText = 'Empezar Juego';
-    startButton.onclick = function() {
-        // Elimina el lobby y carga la escena de cuestionario
-        document.body.removeChild(lobbyContainer);
-        loadQuizScene();
-    };
-    lobbyContainer.appendChild(startButton);
-
-    // Botón para opciones (aquí puedes agregar más funcionalidades si lo deseas)
-    const optionsButton = document.createElement('button');
-    optionsButton.innerText = 'Opciones';
-    optionsButton.onclick = function() {
-        // Aquí puedes agregar opciones si lo deseas más adelante
-        alert("Opciones aún no implementadas");
-    };
-    lobbyContainer.appendChild(optionsButton);
+// Función de animación para que el cubo gire
+function animate() {
+    requestAnimationFrame(animate);
+    cube.rotation.x += 0.01;
+    cube.rotation.y += 0.01;
+    renderer.render(scene, camera);
 }
+animate();
 
-// Llamamos a la función loadLobbyScene para mostrar el lobby al inicio
-loadLobbyScene();
+// Manejo del botón de iniciar juego
+document.getElementById('start-game-button').addEventListener('click', () => {
+    loadQuizScene(); // Función que carga el cuestionario
+});
