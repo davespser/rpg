@@ -1,32 +1,48 @@
-// lobby.js
-
-// Configurar Three.js y la escena inicial
-// Asegúrate de que Three.js esté cargado globalmente
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('canvas') });
+// Escena del Lobby
+const sceneLobby = new THREE.Scene();
+const cameraLobby = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-// Crear un cubo básico
-const geometry = new THREE.BoxGeometry();
-const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-const cube = new THREE.Mesh(geometry, material);
-scene.add(cube);
+// Crear el cubo de la escena del lobby
+const geometryLobby = new THREE.BoxGeometry();
+const materialLobby = new THREE.MeshBasicMaterial({ color: 0x007BFF });
+const cubeLobby = new THREE.Mesh(geometryLobby, materialLobby);
+sceneLobby.add(cubeLobby);
 
-// Ajustar la posición de la cámara
-camera.position.z = 5;
+cameraLobby.position.z = 5;
 
-// Función de animación para que el cubo gire
-function animate() {
-    requestAnimationFrame(animate);
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
-    renderer.render(scene, camera);
+// Mostrar texto de instrucciones (canvas 2D sobre la escena 3D)
+const lobbyContainer = document.createElement('div');
+lobbyContainer.style.position = 'absolute';
+lobbyContainer.style.top = '50%';
+lobbyContainer.style.left = '50%';
+lobbyContainer.style.transform = 'translate(-50%, -50%)';
+lobbyContainer.style.textAlign = 'center';
+lobbyContainer.innerHTML = `
+    <h1>Bienvenido al RPG de Colores</h1>
+    <button id="start-game-button">Empezar Juego</button>
+    <button id="options-button">Opciones</button>
+`;
+document.body.appendChild(lobbyContainer);
+
+// Animar el lobby
+function animateLobby() {
+    requestAnimationFrame(animateLobby);
+    cubeLobby.rotation.x += 0.01;
+    cubeLobby.rotation.y += 0.01;
+    renderer.render(sceneLobby, cameraLobby);
 }
-animate();
+animateLobby();
 
-// Manejo del botón de iniciar juego
+// Manejar eventos de los botones
 document.getElementById('start-game-button').addEventListener('click', () => {
-    loadQuizScene(); // Función que carga el cuestionario
+    // Cambiar a la escena del cuestionario
+    lobbyContainer.style.display = 'none';
+    loadQuizScene();
+});
+
+document.getElementById('options-button').addEventListener('click', () => {
+    alert("Opciones: Aún no implementado.");
 });
