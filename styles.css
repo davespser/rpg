@@ -47,4 +47,149 @@ body {
 }
 
 /* Estilo del cuestionario */
-#quiz
+#quiz-container {
+    position: absolute;
+    top: 10%; /* Ajusta esta propiedad para mover el cuestionario más arriba */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    display: none;
+    max-width: 400px; /* Reducir el ancho del cuestionario */
+    width: 100%;
+    padding: 15px; /* Reducir el padding para hacerlo más pequeño */
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+#quiz-container h3 {
+    font-size: 20px; /* Reducir tamaño de la fuente */
+    margin-bottom: 15px;
+    color: #333;
+}
+
+#quiz-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Reducir espacio entre las preguntas */
+    align-items: center;
+}
+
+#quiz-container label {
+    font-size: 14px; /* Reducir tamaño de la fuente */
+    color: #333;
+    margin-bottom: 5px;
+}
+
+#quiz-container input {
+    width: 100%;
+    max-width: 120px; /* Reducir el tamaño del campo de entrada */
+    padding: 8px; /* Reducir padding */
+    font-size: 14px; /* Reducir tamaño de la fuente */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#quiz-container input[type="number"] {
+    width: 60px; /* Reducir el tamaño de los campos numéricos */
+}
+
+#quiz-container button {
+    margin-top: 20px;
+    padding: 8px 16px; /* Reducir el tamaño del botón */
+    font-size: 14px; /* Reducir tamaño de la fuente */
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#quiz-container button:hover {
+    background-color: #45a049;
+}
+
+/* Estilo del canvas */
+#canvas {
+    display: block;
+    margin: 0 auto;
+}
+
+/* Media Queries para pantallas pequeñas (Smartphones) */
+@media (max-width: 768px) {
+    /* Ajustes del lobby */
+    #lobby-container h1 {
+        font-size: 24px;
+    }
+
+    #lobby-container button {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+
+    /* Ajustes del cuestionario */
+    #quiz-container {
+        max-width: 320px; /* Ajustar el ancho máximo del cuestionario para pantallas pequeñas */
+        padding: 10px; /* Reducir el padding */
+        top: 8%; /* Moverlo un poco más arriba */
+    }
+
+    #quiz-container h3 {
+        font-size: 18px; /* Ajustar el tamaño de los encabezados */
+    }
+
+    #quiz-container label {
+        font-size: 12px; /* Reducir el tamaño de las etiquetas */
+    }
+
+    #quiz-container input {
+        width: 100%;
+        max-width: 80px; /* Reducir el tamaño de los campos de entrada */
+        padding: 6px; /* Reducir el padding */
+        font-size: 12px; /* Reducir el tamaño de la fuente */
+    }
+
+    #quiz-container button {
+        font-size: 12px; /* Reducir el tamaño de la fuente del botón */
+        padding: 6px 12px; /* Ajustar el tamaño del botón */
+    }
+}
+
+/* Media Queries para pantallas extremadamente pequeñas (móviles muy pequeños) */
+@media (max-width: 480px) {
+    /* Ajustes del lobby */
+    #lobby-container h1 {
+        font-size: 20px;
+    }
+
+    #lobby-container button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    /* Ajustes del cuestionario */
+    #quiz-container {
+        max-width: 280px; /* Hacer el cuestionario aún más pequeño en pantallas pequeñas */
+        padding: 8px; /* Reducir padding */
+    }
+
+    #quiz-container h3 {
+        font-size: 16px; /* Ajustar el tamaño del encabezado */
+    }
+
+    #quiz-container label {
+        font-size: 10px; /* Reducir tamaño de la fuente aún más */
+    }
+
+    #quiz-container input {
+        width: 100%;
+        max-width: 70px; /* Reducir aún más el tamaño del campo de entrada */
+        padding: 5px; /* Reducir padding */
+        font-size: 10px; /* Reducir el tamaño de la fuente */
+    }
+
+    #quiz-container button {
+        font-size: 10px; /* Reducir aún más el tamaño del botón */
+        padding: 5px 10px; /* Ajustar el tamaño del botón */
+    }
+}
