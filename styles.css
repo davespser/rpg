@@ -50,7 +50,7 @@ body {
 #quiz-container {
     position: absolute;
     top: 15%;
-    left: 50%;
+    left: 30%;
     transform: translateX(-50%);
     text-align: center;
     display: none;
@@ -58,4 +58,59 @@ body {
     width: 100%;
     padding: 20px;
     background-color: white;
-    box-shadow: 0 4px 10px rgba(0, 0,
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+#quiz-container h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#quiz-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+#quiz-container label {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+#quiz-container input {
+    width: 100%;
+    max-width: 150px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#quiz-container input[type="number"] {
+    width: 60px;
+}
+
+#quiz-container button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#quiz-container button:hover {
+    background-color: #45a049;
+}
+
+/* Estilo del canvas */
+#canvas {
+    display: block;
+    margin: 0 auto;
+}
