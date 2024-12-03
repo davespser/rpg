@@ -3,31 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juego de Color y Temores</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- Importar Three.js 0.138.3 -->
+    <title>Three.js RPG Modular</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.138.3/three.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="scene-container">
-        <canvas id="canvas"></canvas>
-    </div>
-
-    <!-- Contenedor del Lobby (inicial) -->
-    <div id="lobby-container">
-        <h1>Bienvenido al Juego de Color y Temores</h1>
-        <button id="start-game-button">Empezar Juego</button>
-        <button id="options-button">Opciones</button>
-    </div>
-
-    <!-- Contenedor del Cuestionario -->
-    <div id="quiz-container" style="display: none;">
-        <!-- El cuestionario se inyectará aquí desde cuestionario.js -->
-    </div>
-
-    <!-- Añadir scripts -->
     <script src="lobby.js"></script>
     <script src="cuestionario.js"></script>
-
 </body>
 </html>
