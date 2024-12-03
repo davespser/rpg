@@ -1,10 +1,13 @@
 // Escena del Cuestionario
 const sceneQuiz = new THREE.Scene();
 const cameraQuiz = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-
+const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 1); // Cielo, suelo, intensidad
+hemiLight.position.set(0, 20, 0);
+sceneQuiz.add(hemiLight);
 // Crear un cubo diferente para la escena del cuestionario
 const geometryQuiz = new THREE.BoxGeometry();
-const materialQuiz = new THREE.MeshBasicMaterial({ color: 0xFF5722 }); // Color inicial: naranja
+const materialQuiz = new THREE.MeshStandardMaterial({ color: 0xFF5722, metalness: 0.8,
+    roughness: 0.2,}); // Color inicial: naranja
 const cubeQuiz = new THREE.Mesh(geometryQuiz, materialQuiz);
 sceneQuiz.add(cubeQuiz);
 
