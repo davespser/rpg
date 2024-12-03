@@ -49,8 +49,8 @@ body {
 /* Estilo del cuestionario */
 #quiz-container {
     position: absolute;
-    top: 15%;
-    left: 30%;
+    top: 10%;
+    left: 50%;
     transform: translateX(-50%);
     text-align: center;
     display: none;
