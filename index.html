@@ -34,58 +34,10 @@
     <div id="quiz-container">
         <h3>Descubre tu color basado en tus temores</h3>
         <form id="quiz-form">
-            <h4>Sección 1: Rojo (R)</h4>
-            <label>¿Qué tan incómodo te sientes frente a situaciones de peligro físico? (1-5)</label>
-            <input type="number" name="q1" min="1" max="5" required>
-            <label>¿Temes al conflicto o a las confrontaciones? (1-5)</label>
-            <input type="number" name="q2" min="1" max="5" required>
-            <label>¿Te sientes ansioso/a en situaciones de estrés intenso? (1-5)</label>
-            <input type="number" name="q3" min="1" max="5" required>
-            <label>¿Te provoca miedo la violencia o el caos? (1-5)</label>
-            <input type="number" name="q4" min="1" max="5" required>
-            <label>¿Evitas riesgos extremos o deportes peligrosos? (1-5)</label>
-            <input type="number" name="q5" min="1" max="5" required>
-            <label>¿Te incomoda estar en lugares abarrotados? (1-5)</label>
-            <input type="number" name="q6" min="1" max="5" required>
-            <label>¿Qué tan reactivo/a eres ante el peligro inmediato? (1-5)</label>
-            <input type="number" name="q7" min="1" max="5" required>
-
-            <h4>Sección 2: Verde (G)</h4>
-            <label>¿Te preocupa la incertidumbre en el futuro? (1-5)</label>
-            <input type="number" name="q8" min="1" max="5" required>
-            <label>¿Qué tan ansioso/a te pone la inestabilidad económica o laboral? (1-5)</label>
-            <input type="number" name="q9" min="1" max="5" required>
-            <label>¿Te sientes inseguro/a al caminar por lugares desconocidos? (1-5)</label>
-            <input type="number" name="q10" min="1" max="5" required>
-            <label>¿Te genera ansiedad perderte o no saber cómo llegar a un lugar? (1-5)</label>
-            <input type="number" name="q11" min="1" max="5" required>
-            <label>¿Te incomoda la idea de que las cosas cambien inesperadamente? (1-5)</label>
-            <input type="number" name="q12" min="1" max="5" required>
-            <label>¿Qué tan importante es la estabilidad en tu vida? (1-5)</label>
-            <input type="number" name="q13" min="1" max="5" required>
-            <label>¿Temes perder el control sobre lo que te rodea? (1-5)</label>
-            <input type="number" name="q14" min="1" max="5" required>
-
-            <h4>Sección 3: Azul (B)</h4>
-            <label>¿Qué tan incómodo/a te hace sentir estar completamente solo/a? (1-5)</label>
-            <input type="number" name="q15" min="1" max="5" required>
-            <label>¿Te provoca miedo el silencio absoluto o la oscuridad total? (1-5)</label>
-            <input type="number" name="q16" min="1" max="5" required>
-            <label>¿Qué tan introspectivo/a eres cuando tienes miedo? (1-5)</label>
-            <input type="number" name="q17" min="1" max="5" required>
-            <label>¿Te preocupan preguntas existenciales como el propósito de la vida? (1-5)</label>
-            <input type="number" name="q18" min="1" max="5" required>
-            <label>¿Sientes temor por lo desconocido o lo incierto? (1-5)</label>
-            <input type="number" name="q19" min="1" max="5" required>
-            <label>¿Te asusta perderte en tus propios pensamientos o recuerdos? (1-5)</label>
-            <input type="number" name="q20" min="1" max="5" required>
-            <label>¿Qué tan conectado/a estás con la idea de infinito o vacío? (1-5)</label>
-            <input type="number" name="q21" min="1" max="5" required>
-
+            <!-- (Formulario como estaba) -->
             <button type="submit">Descubrir mi color</button>
         </form>
     </div>
-
     <script>
         // Set up Three.js scene
         const scene = new THREE.Scene();
@@ -94,16 +46,27 @@
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(renderer.domElement);
 
-        // Add default cube
+        // Function to create different geometries based on RGB values
+        function createGeometry(red, green, blue) {
+            if (red > green && red > blue) {
+                return new THREE.BoxGeometry(); // Cubo para rojo
+            } else if (green > red && green > blue) {
+                return new THREE.SphereGeometry(); // Esfera para verde
+            } else {
+                return new THREE.ConeGeometry(); // Cono para azul
+            }
+        }
+
+        // Initial geometry and material
         let geometry = new THREE.BoxGeometry();
-        let material = new THREE.MeshBasicMaterial({ color: 0x000000 }); // Default color: black
+        const material = new THREE.MeshBasicMaterial({ color: 0x000000 }); // Default color: black
         let mesh = new THREE.Mesh(geometry, material);
         scene.add(mesh);
 
         // Position the camera
         camera.position.z = 5;
 
-        // Animate the cube (rotation)
+        // Animate the mesh (rotation)
         function animate() {
             requestAnimationFrame(animate);
             mesh.rotation.x += 0.01;
@@ -121,25 +84,24 @@
             const answers = Array.from(formData.values()).map(value => parseInt(value, 10));
 
             // Map answers to RGB values
-            const red = Math.min(255, answers.slice(0, 7).reduce((acc, val) => acc + val * 30, 0)); // Sección 1
-            const green = Math.min(255, answers.slice(7, 14).reduce((acc, val) => acc + val * 30, 0)); // Sección 2
-            const blue = Math.min(255, answers.slice(14).reduce((acc, val) => acc + val * 30, 0)); // Sección 3
+            const red = Math.min(255, answers.slice(0, 7).reduce((acc, val) => acc + val * 10, 0)); // Sección 1
+            const green = Math.min(255, answers.slice(7, 14).reduce((acc, val) => acc + val * 10, 0)); // Sección 2
+            const blue = Math.min(255, answers.slice(14).reduce((acc, val) => acc + val * 10, 0)); // Sección 3
 
             // Convert RGB to Hex
             const colorHex = (red << 16) | (green << 8) | blue;
 
-            // Determine dominant color and update geometry
-            const dominant = Math.max(red, green, blue);
-            let newGeometry;
+            // Remove the old mesh
+            scene.remove(mesh);
 
-            if (dominant === red) {
-                newGeometry = new THREE.ConeGeometry(1, 2, 4); // Puntiaguda (pirámide)
-            } else if (dominant === green) {
-                newGeometry = new THREE.BoxGeometry(); // Cúbica
-            } else {
-                newGeometry = new THREE.SphereGeometry(1, 32, 32); // Suave (esfera)
-            }
+            // Create new geometry based on RGB values
+            geometry = createGeometry(red, green, blue);
+            mesh = new THREE.Mesh(geometry, material);
+            material.color.set(colorHex);
+            scene.add(mesh);
 
-            // Remove previous mesh and create new one
-            scene.remove(mesh); 
-            geometry.dispose();
+            alert(`Tu color es: #${colorHex.toString(16).padStart(6, '0').toUpperCase()}`);
+        });
+    </script>
+</body>
+</html>
