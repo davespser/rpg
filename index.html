@@ -140,9 +140,6 @@
                 newGeometry = new THREE.SphereGeometry(1, 32, 32); // Suave (esfera)
             }
 
-            // Update geometry and material
-            scene.remove(mesh); // Remove old mesh
-            geometry.dispose(); // Clean up memory
-            geometry = newGeometry;
-            mesh = new THREE.Mesh(geometry, material);
-            material.color.set
+            // Remove previous mesh and create new one
+            scene.remove(mesh); 
+            geometry.dispose();
