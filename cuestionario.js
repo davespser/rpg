@@ -13,13 +13,13 @@ cameraQuiz.position.z = 5;
 // Contenedor del cuestionario
 const quizContainer = document.createElement('div');
 quizContainer.style.position = 'absolute';
-quizContainer.style.top = '10%';
-quizContainer.style.left = '10%';
+quizContainer.style.top = '5%';
+quizContainer.style.left = '5%';
 quizContainer.style.background = 'rgba(255, 255, 255, 0.9)';
 quizContainer.style.padding = '20px';
 quizContainer.style.borderRadius = '10px';
 quizContainer.style.overflowY = 'auto';
-quizContainer.style.maxHeight = '80vh';
+quizContainer.style.maxHeight = '60vh';
 quizContainer.innerHTML = `
     <h3>Descubre tu color</h3>
     <form id="quiz-form">
