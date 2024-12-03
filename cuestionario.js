@@ -1,5 +1,7 @@
 import * as THREE from 'three';
-
+export function loadQuizScene() {
+    // Código para configurar la escena de cuestionario
+}
 // Configuración de la escena
 const sceneQuiz = new THREE.Scene();
 const cameraQuiz = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
