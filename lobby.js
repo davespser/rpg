@@ -1,49 +1,39 @@
+// lobby.js
+
+// Importa las funciones necesarias de cuestionario.js
 import { loadQuizScene } from './cuestionario.js';
-// Escena del Lobby
-const sceneLobby = new THREE.Scene();
-const cameraLobby = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({ antialias: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
 
-// Crear el cubo de la escena del lobby
-const geometryLobby = new THREE.BoxGeometry();
-const materialLobby = new THREE.MeshBasicMaterial({ color: 0x007BFF });
-const cubeLobby = new THREE.Mesh(geometryLobby, materialLobby);
-sceneLobby.add(cubeLobby);
+// Función que se ejecuta cuando se carga la escena de lobby
+export function loadLobbyScene() {
+    // Crea el contenedor para la interfaz de lobby
+    const lobbyContainer = document.createElement('div');
+    lobbyContainer.id = 'lobby-container';
+    document.body.appendChild(lobbyContainer);
 
-cameraLobby.position.z = 5;
+    // Título del lobby
+    const title = document.createElement('h1');
+    title.innerText = 'Bienvenido al Juego';
+    lobbyContainer.appendChild(title);
 
-// Mostrar texto de instrucciones (canvas 2D sobre la escena 3D)
-const lobbyContainer = document.createElement('div');
-lobbyContainer.style.position = 'absolute';
-lobbyContainer.style.top = '50%';
-lobbyContainer.style.left = '50%';
-lobbyContainer.style.transform = 'translate(-50%, -50%)';
-lobbyContainer.style.textAlign = 'center';
-lobbyContainer.innerHTML = `
-    <h1>Bienvenido al RPG de Colores</h1>
-    <button id="start-game-button">Empezar Juego</button>
-    <button id="options-button">Opciones</button>
-`;
-document.body.appendChild(lobbyContainer);
+    // Botón para empezar el juego
+    const startButton = document.createElement('button');
+    startButton.innerText = 'Empezar Juego';
+    startButton.onclick = function() {
+        // Elimina el lobby y carga la escena de cuestionario
+        document.body.removeChild(lobbyContainer);
+        loadQuizScene();
+    };
+    lobbyContainer.appendChild(startButton);
 
-// Animar el lobby
-function animateLobby() {
-    requestAnimationFrame(animateLobby);
-    cubeLobby.rotation.x += 0.01;
-    cubeLobby.rotation.y += 0.01;
-    renderer.render(sceneLobby, cameraLobby);
+    // Botón para opciones (aquí puedes agregar más funcionalidades si lo deseas)
+    const optionsButton = document.createElement('button');
+    optionsButton.innerText = 'Opciones';
+    optionsButton.onclick = function() {
+        // Aquí puedes agregar opciones si lo deseas más adelante
+        alert("Opciones aún no implementadas");
+    };
+    lobbyContainer.appendChild(optionsButton);
 }
-animateLobby();
 
-// Manejar eventos de los botones
-document.getElementById('start-game-button').addEventListener('click', () => {
-    // Cambiar a la escena del cuestionario
-    lobbyContainer.style.display = 'none';
-    loadQuizScene();
-});
-
-document.getElementById('options-button').addEventListener('click', () => {
-    alert("Opciones: Aún no implementado.");
-});
+// Llamamos a la función loadLobbyScene para mostrar el lobby al inicio
+loadLobbyScene();
