@@ -1,155 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Three.js Color Quiz</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.138.3/three.min.js"></script>
-    <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-        }
-        #quiz-container {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 300px;
-            overflow-y: auto;
-            max-height: 90vh;
-        }
-        label {
-            display: block;
-            margin-bottom: 10px;
-        }
-        button {
-            margin-top: 20px;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three.js Color Quiz</title>
+    <script<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three.js Color Quiz</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.138.3/three.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        #quiz-container, #stats-container {
+            position: absolute src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.138.3/three.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        #quiz-container, #stats-container {
+            position: absolute;
+            top: 10px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 300px;
+            overflow-y: auto;
+            max-height: 90vh;
+        }
+        #quiz-container {
+            left: 10px;
+        }
+        #stats-container {
+            left: 320px;
+            display: none;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        button {
+            margin-top: 20px;
+        }
+        .stat {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+    </style>
 </head>
 <body>
-    <div id="quiz-container">
-        <h3>Descubre tu color basado en tus temores</h3>
-        <form id="quiz-form">
-            <h4>Sección 1: Rojo (R)</h4>
-            <label>¿Qué tan incómodo te sientes frente a situaciones de peligro físico? (1-5)</label>
-            <input type="number" name="q1" min="1" max="5" required>
+    <div id="quiz-container">
+        <h3>Descubre tu color basado en tus temores</h3>
+        <form id="quiz-form">
+            <h4>Sección 1: Rojo (R)</h4>
+            <label>¿Qué tan incómodo te sientes frente a situaciones de peligro físico? (1-5)</label>
+            <input type="number" name="q1" min="1" max="5" required>
 
-            <label>¿Temes al conflicto o a las confrontaciones? (1-5)</label>
-            <input type="number" name="q2" min="1" max="5" required>
+            <label>¿Temes al conflicto o a las confrontaciones? (1-5)</label>
+            <input type="number" name="q2" min="1" max="5" required>
 
-            <label>¿Te sientes ansioso/a en situaciones de estrés intenso? (1-5)</label>
-            <input type="number" name="q3" min="1" max="5" required>
+            <label>¿Te sientes ansioso/a en situaciones de estrés intenso? (1-5)</label>
+            <input type="number" name="q3" min="1" max="5" required>
 
-            <label>¿Te provoca miedo la violencia o el caos? (1-5)</label>
-            <input type="number" name="q4" min="1" max="5" required>
+            <label>¿Te provoca miedo la violencia o el caos? (1-5)</label>
+            <input type="number" name="q4" min="1" max="5" required>
 
-            <label>¿Evitas riesgos extremos o deportes peligrosos? (1-5)</label>
-            <input type="number" name="q5" min="1" max="5" required>
+            <label>¿Evitas riesgos extremos o deportes peligrosos? (1-5)</label>
+            <input type="number" name="q5" min="1" max="5" required>
 
-            <label>¿Te incomoda estar en lugares abarrotados? (1-5)</label>
-            <input type="number" name="q6" min="1" max="5" required>
+            <label>¿Te incomoda estar en lugares abarrotados? (1-5)</label>
+            <input type="number" name="q6" min="1" max="5" required>
 
-            <label>¿Qué tan reactivo/a eres ante el peligro inmediato? (1-5)</label>
-            <input type="number" name="q7" min="1" max="5" required>
+            <label>¿Qué tan reactivo/a eres ante el peligro inmediato? (1-5)</label>
+            <input type="number" name="q7" min="1" max="5" required>
 
-            <h4>Sección 2: Verde (G)</h4>
-            <label>¿Te preocupa la incertidumbre en el futuro? (1-5)</label>
-            <input type="number" name="q8" min="1" max="5" required>
+            <h4>Sección 2: Verde (G)</h4>
+            <label>¿Te preocupa la incertidumbre en el futuro? (1-5)</label>
+            <input type="number" name="q8" min="1" max="5" required>
 
-            <label>¿Qué tan ansioso/a te pone la inestabilidad económica o laboral? (1-5)</label>
-            <input type="number" name="q9" min="1" max="5" required>
+            <label>¿Qué tan ansioso/a te pone la inestabilidad económica o laboral? (1-5)</label>
+            <input type="number" name="q9" min="1" max="5" required>
 
-            <label>¿Te sientes inseguro/a al caminar por lugares desconocidos? (1-5)</label>
-            <input type="number" name="q10" min="1" max="5" required>
+            <label>¿Te sientes inseguro/a al caminar por lugares desconocidos? (1-5)</label>
+            <input type="number" name="q10" min="1" max="5" required>
 
-            <label>¿Te genera ansiedad perderte o no saber cómo llegar a un lugar? (1-5)</label>
-            <input type="number" name="q11" min="1" max="5" required>
+            <label>¿Te genera ansiedad perderte o no saber cómo llegar a un lugar? (1-5)</label>
+            <input type="number" name="q11" min="1" max="5" required>
 
-            <label>¿Te incomoda la idea de que las cosas cambien inesperadamente? (1-5)</label>
-            <input type="number" name="q12" min="1" max="5" required>
+            <label>¿Te incomoda la idea de que las cosas cambien inesperadamente? (1-5)</label>
+            <input type="number" name="q12" min="1" max="5" required>
 
-            <label>¿Qué tan importante es la estabilidad en tu vida? (1-5)</label>
-            <input type="number" name="q13" min="1" max="5" required>
+            <label>¿Qué tan importante es la estabilidad en tu vida? (1-5)</label>
+            <input type="number" name="q13" min="1" max="5" required>
 
-            <label>¿Temes perder el control sobre lo que te rodea? (1-5)</label>
-            <input type="number" name="q14" min="1" max="5" required>
+            <label>¿Temes perder el control sobre lo que te rodea? (1-5)</label>
+            <input type="number" name="q14" min="1" max="5" required>
 
-            <h4>Sección 3: Azul (B)</h4>
-            <label>¿Qué tan incómodo/a te hace sentir estar completamente solo/a? (1-5)</label>
-            <input type="number" name="q15" min="1" max="5" required>
+            <h4>Sección 3: Azul (B)</h4>
+            <label>¿Qué tan incómodo/a te hace sentir estar completamente solo/a? (1-5)</label>
+            <input type="number" name="q15" min="1" max="5" required>
 
-            <label>¿Te provoca miedo el silencio absoluto o la oscuridad total? (1-5)</label>
-            <input type="number" name="q16" min="1" max="5" required>
+            <label>¿Te provoca miedo el silencio absoluto o la oscuridad total? (1-5)</label>
+            <input type="number" name="q16" min="1" max="5" required>
 
-            <label>¿Qué tan introspectivo/a eres cuando tienes miedo? (1-5)</label>
-            <input type="number" name="q17" min="1" max="5" required>
+            <label>¿Qué tan introspectivo/a eres cuando tienes miedo? (1-5)</label>
+            <input type="number" name="q17" min="1" max="5" required>
 
-            <label>¿Te preocupan preguntas existenciales como el propósito de la vida? (1-5)</label>
-            <input type="number" name="q18" min="1" max="5" required>
+            <label>¿Te preocupan preguntas existenciales como el propósito de la vida? (1-5)</label>
+            <input type="number" name="q18" min="1" max="5" required>
 
-            <label>¿Sientes temor por lo desconocido o lo incierto? (1-5)</label>
-            <input type="number" name="q19" min="1" max="5" required>
+            <label>¿Sientes temor por lo desconocido o lo incierto? (1-5)</label>
+            <input type="number" name="q19" min="1" max="5" required>
 
-            <label>¿Te asusta perderte en tus propios pensamientos o recuerdos? (1-5)</label>
-            <input type="number" name="q20" min="1" max="5" required>
+            <label>¿Te asusta perderte en tus propios pensamientos o recuerdos? (1-5)</label>
+            <input type="number" name="q20" min="1" max="5" required>
 
-            <label>¿Qué tan conectado/a estás con la idea de infinito o vacío? (1-5)</label>
-            <input type="number" name="q21" min="1" max="5" required>
+            <button type="submit">Descubrir mi color</button>
+        </form>
+    </div>
+    <div id="stats-container">
+        <h3>Estadísticas Derivadas</h3>
+        <div id="stats-list"></div>
+    </div>
+    <script>
+        // Configuración básica de Three.js
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
 
-            <button type="submit">Descubrir mi color</button>
-        </form>
-    </div>
-    <script>
-        // Set up Three.js scene
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.body.appendChild(renderer.domElement);
+        const geometry = new THREE.BoxGeometry();
+        const material = new THREE.MeshBasicMaterial({ color: 0x000000 });
+        const cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
+        camera.position.z = 5;
 
-        // Add a cube to the scene
-        const geometry = new THREE.BoxGeometry();
-        const material = new THREE.MeshBasicMaterial({ color: 0x000000 }); // Default color: black
-        const cube = new THREE.Mesh(geometry, material);
-        scene.add(cube);
+        function animate() {
+            requestAnimationFrame(animate);
+            cube.rotation.x += 0.01;
+            cube.rotation.y += 0.01;
+            renderer.render(scene, camera);
+        }
+        animate();
 
-        // Position the camera
-        camera.position.z = 5;
+        function calculateDerivedStats(r, g, b) {
+            const total = r + g + b;
+            return {
+                attack: r / 255 * 100,
+                speed: (r + g) / 510 * 100,
+                magic: b / 255 * 100,
+                defense: (r * 0.6 + g * 0.4) / 255 * 100,
+                precision: (g + b) / 510 * 100,
+                vitality: total / 765 * 100,
+                agility: g / 255 * 100,
+                intelligence: b / 255 * 100,
+                endurance: r / 255 * 50 + g / 255 * 50,
+                charisma: b / 255 * 75,
+                perception: g / 255 * 75,
+                creativity: b / 255 * 100,
+                leadership: r / 255 * 100,
+                stealth: g / 255 * 100,
+                resilience: (r + g) / 510 * 100,
+                bravery: r / 255 * 100,
+                focus: b / 255 * 100,
+                luck: (g + b) / 510 * 50,
+                energy: total / 765 * 100,
+                harmony: (r + g + b) / (255 * 3) * 100
+            };
+        }
 
-        // Animate the cube (rotation)
-        function animate() {
-            requestAnimationFrame(animate);
-            cube.rotation.x += 0.01;
-            cube.rotation.y += 0.01;
-            renderer.render(scene, camera);
-        }
-        animate();
+        document.getElementById('quiz-form').addEventListener('submit', (event) => {
+            event.preventDefault();
 
-        // Handle the quiz form
-        document.getElementById('quiz-form').addEventListener('submit', (event) => {
-            event.preventDefault();
+            const formData = new FormData(event.target);
+            const answers = Array.from(formData.values()).map(val => parseInt(val, 10));
 
-            // Get the form data
-            const formData = new FormData(event.target);
-            const answers = Array.from(formData.values()).map(value => parseInt(value, 10));
+            const red = Math.min(255, answers.slice(0, 7).reduce((acc, val) => acc + val * 10, 0));
+            const green = Math.min(255, answers.slice(7, 14).reduce((acc, val) => acc + val * 10, 0));
+            const blue = Math.min(255, answers.slice(14).reduce((acc, val) => acc + val * 10, 0));
 
-            // Map answers to RGB values
-            const red = Math.min(255, answers.slice(0, 7).reduce((acc, val) => acc + val * 10, 0)); // Sección 1
-            const green = Math.min(255, answers.slice(7, 14).reduce((acc, val) => acc + val * 10, 0)); // Sección 2
-            const blue = Math.min(255, answers.slice(14).reduce((acc, val) => acc + val * 10, 0)); // Sección 3
+            const colorHex = (red << 16) | (green << 8) | blue;
+            material.color.set(colorHex);
 
-            // Convert RGB to Hex
-            const colorHex = (red << 16) | (green << 8) | blue;
+            const derivedStats = calculateDerivedStats(red, green, blue);
 
-            // Update cube color
-            material.color.set(colorHex);
+            // Display stats in the stats container
+            const statsContainer = document.getElementById('stats-container');
+            const statsList = document.getElementById('stats-list');
+            statsList.innerHTML = ''; // Clear previous stats
+            for (const [key, value] of Object.entries(derivedStats)) {
+                const statDiv = document.createElement('div');
+                statDiv.classList.add('stat');
+                statDiv.textContent = `${key.charAt(0).toUpperCase() + key.slice(1)}: ${value.toFixed(2)}`;
+                statsList.appendChild(statDiv);
+            }
+            statsContainer.style.display = 'block';
 
-            alert(`Tu color es: #${colorHex.toString(16).padStart(6, '0').toUpperCase()}`);
-        });
-    </script>
+            alert(`Tu color es: #${colorHex.toString(16).padStart(6, '0').toUpperCase()}`);
+        });
+    </script>
 </body>
 </html>
