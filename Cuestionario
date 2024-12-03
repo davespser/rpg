@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three.js Color Quiz</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r136/three.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        #quiz-container {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 300px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        button {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="quiz-container">
+        <h3>Descubre tu color basado en tus temores</h3>
+        <form id="quiz-form">
+            <label>¿Qué tan incómodo te sientes frente a situaciones de peligro físico? (1-5)</label>
+            <input type="number" name="danger" min="1" max="5" required>
+
+            <label>¿Te preocupa la incertidumbre en el futuro? (1-5)</label>
+            <input type="number" name="uncertainty" min="1" max="5" required>
+
+            <label>¿Qué tan incómodo/a te hace sentir estar completamente solo/a? (1-5)</label>
+            <input type="number" name="isolation" min="1" max="5" required>
+
+            <button type="submit">Descubrir mi color</button>
+        </form>
+    </div>
+    <script>
+        // Set up Three.js scene
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Add a cube to the scene
+        const geometry = new THREE.BoxGeometry();
+        const material = new THREE.MeshBasicMaterial({ color: 0x000000 }); // Default color: black
+        const cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
+
+        // Position the camera
+        camera.position.z = 5;
+
+        // Animate the cube (rotation)
+        function animate() {
+            requestAnimationFrame(animate);
+            cube.rotation.x += 0.01;
+            cube.rotation.y += 0.01;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Handle the quiz form
+        document.getElementById('quiz-form').addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            // Get the form data
+            const formData = new FormData(event.target);
+            const danger = parseInt(formData.get('danger'), 10);
+            const uncertainty = parseInt(formData.get('uncertainty'), 10);
+            const isolation = parseInt(formData.get('isolation'), 10);
+
+            // Map answers to RGB values
+            const red = Math.min(255, danger * 50); // Danger affects Red
+            const green = Math.min(255, uncertainty * 50); // Uncertainty affects Green
+            const blue = Math.min(255, isolation * 50); // Isolation affects Blue
+
+            // Convert RGB to Hex
+            const colorHex = (red << 16) | (green << 8) | blue;
+
+            // Update cube color
+            material.color.set(colorHex);
+
+            alert(`Tu color es: #${colorHex.toString(16).padStart(6, '0').toUpperCase()}`);
+        });
+    </script>
+</body>
+</html>
