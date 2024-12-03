@@ -104,57 +104,51 @@
         </form>
     </div>
     <script>
-        // Configurar la escena de Three.js
+        // Set up Three.js scene
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(renderer.domElement);
 
-        // Función para crear diferentes geometrías según los valores RGB
-        function createGeometry(red, green, blue) {
-            if (red > green && red > blue) {
-                return new THREE.BoxGeometry(); // Cubo para rojo
-            } else if (green > red && green > blue) {
-                return new THREE.SphereGeometry(); // Esfera para verde
-            } else {
-                return new THREE.ConeGeometry(); // Cono para azul
-            }
-        }
+        // Add a cube to the scene
+        const geometry = new THREE.BoxGeometry();
+        const material = new THREE.MeshBasicMaterial({ color: 0x000000 }); // Default color: black
+        const cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
 
-        // Geometría y material inicial
-        let geometry = new THREE.BoxGeometry();
-        const material = new THREE.MeshBasicMaterial({ color: 0x000000 }); // Color predeterminado: negro
-        let mesh = new THREE.Mesh(geometry, material);
-        scene.add(mesh);
-
-        // Posicionar la cámara
+        // Position the camera
         camera.position.z = 5;
 
-        // Función de animación
+        // Animate the cube (rotation)
         function animate() {
             requestAnimationFrame(animate);
+            cube.rotation.x += 0.01;
+            cube.rotation.y += 0.01;
             renderer.render(scene, camera);
         }
         animate();
 
-        // Manejar eventos del formulario
-        document.getElementById('quiz-form').addEventListener('submit', function(event) {
+        // Handle the quiz form
+        document.getElementById('quiz-form').addEventListener('submit', (event) => {
             event.preventDefault();
-            
-            // Obtener los valores del formulario
+
+            // Get the form data
             const formData = new FormData(event.target);
-            const values = Array.from(formData.values()).map(Number);
-            
-            const red = values.slice(0, 7).reduce((a, b) => a + b, 0);
-            const green = values.slice(7, 14).reduce((a, b) => a + b, 0);
-            const blue = values.slice(14, 21).reduce((a, b) => a + b, 0);
-            
-            // Actualizar la geometría del objeto
-            scene.remove(mesh);
-            geometry = createGeometry(red, green, blue);
-            mesh = new THREE.Mesh(geometry, material);
-            scene.add(mesh);
+            const answers = Array.from(formData.values()).map(value => parseInt(value, 10));
+
+            // Map answers to RGB values
+            const red = Math.min(255, answers.slice(0, 7).reduce((acc, val) => acc + val * 10, 0)); // Sección 1
+            const green = Math.min(255, answers.slice(7, 14).reduce((acc, val) => acc + val * 10, 0)); // Sección 2
+            const blue = Math.min(255, answers.slice(14).reduce((acc, val) => acc + val * 10, 0)); // Sección 3
+
+            // Convert RGB to Hex
+            const colorHex = (red << 16) | (green << 8) | blue;
+
+            // Update cube color
+            material.color.set(colorHex);
+
+            alert(`Tu color es: #${colorHex.toString(16).padStart(6, '0').toUpperCase()}`);
         });
     </script>
 </body>
