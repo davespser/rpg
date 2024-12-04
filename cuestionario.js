@@ -92,6 +92,7 @@ function loadQuizScene() {
 
     // Cambiar a la escena del cuestionario
     renderer.setAnimationLoop(() => {
+        cubeQuiz.rotation.x += 0.01;
         cubeQuiz.rotation.y += 0.01;
         renderer.render(sceneQuiz, cameraQuiz);
     });
