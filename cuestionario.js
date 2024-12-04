@@ -14,8 +14,8 @@ const materialQuiz = new THREE.MeshStandardMaterial( {
     roughnessMap: 0,
     metalnessMap: 1,
 
-    envMap: envMap, // important -- especially for metals!
-    envMapIntensity: envMapIntensity
+    envMap: 3, // important -- especially for metals!
+    envMapIntensity: 1
 
 } );
   
