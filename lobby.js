@@ -32,7 +32,7 @@ cameraLobby.position.z = 5;
 // Mostrar texto de instrucciones (canvas 2D sobre la escena 3D)
 const lobbyContainer = document.createElement('div');
 lobbyContainer.style.position = 'absolute';
-lobbyContainer.style.top = '50%';
+lobbyContainer.style.top = '10%';
 lobbyContainer.style.left = '50%';
 lobbyContainer.style.transform = 'translate(-50%, -50%)';
 lobbyContainer.style.textAlign = 'center';
