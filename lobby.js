@@ -67,7 +67,7 @@ document.getElementById('start-game-button').addEventListener('click', () => {
 });
 
 document.getElementById('options-button').addEventListener('click', () => {
-    loadEscenario1();
+    loadescenario1();
 });
 
 function loadEscenario1() {
