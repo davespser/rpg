@@ -4,6 +4,7 @@ const cameraQuiz = new THREE.PerspectiveCamera(75, window.innerWidth / window.in
 
 // Crear un cubo diferente para la escena del cuestionario
 const geometryQuiz = new THREE.BoxGeometry(); 
+geonetryQuiz.position.y = 1;
 const materialQuiz = new THREE.MeshPhongMaterial( {
 
     shininess: 1024,
