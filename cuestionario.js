@@ -8,11 +8,11 @@ const materialQuiz = new THREE.MeshStandardMaterial( {
 
     color: 0xffffff,
 
-    roughness: roughness,
-    metalness: metalness,
+    roughness: 0,
+    metalness: 1,
 
-    roughnessMap: roughnessMap,
-    metalnessMap: metalnessMap,
+    roughnessMap: 0,
+    metalnessMap: 1,
 
     envMap: envMap, // important -- especially for metals!
     envMapIntensity: envMapIntensity
