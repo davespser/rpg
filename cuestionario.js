@@ -4,10 +4,10 @@ const cameraQuiz = new THREE.PerspectiveCamera(75, window.innerWidth / window.in
 
 // Crear un cubo diferente para la escena del cuestionario
 const geometryQuiz = new THREE.BoxGeometry(); 
-const materialQuiz = new THREE.MeshStandardMaterial( {
+const materialQuiz = new THREE.MeshPhongMaterial( {
 
     shininess: 150,
-    metalness: 2,
+    metalness: 1,
     specular: 0xffffff
   });
 
@@ -19,12 +19,14 @@ const cubeQuiz = new THREE.Mesh(geometryQuiz, materialQuiz);
 sceneQuiz.add(cubeQuiz);
 
 cameraQuiz.position.z = 5;
-const ambientLight = new THREE.AmbientLight(0xffffff, 1); // Luz ambiental
+const ambientLight = new THREE.AmbientLight(0x404040); // Luz ambiental
         sceneQuiz.add(ambientLight);
 const directionalLight = new THREE.DirectionalLight(0xffffff, 1); // Luz direccional
         directionalLight.position.set(5, 5, 5).normalize();
         sceneQuiz.add(directionalLight);
-// Contenedor del cuestionario
+ const pointLight = new THREE.PointLight(0xffffff, 1);
+  pointLight.position.set(-5, -5, 5);
+  scene.add(pointLight);
 const quizContainer = document.createElement('div');
 quizContainer.style.position = 'absolute';
 quizContainer.style.top = '10%';
