@@ -67,5 +67,5 @@ document.getElementById('start-game-button').addEventListener('click', () => {
 });
 
 document.getElementById('options-button').addEventListener('click', () => {
-    alert("Opciones: Aún no implementado.");
+    loadEscenario1();
 });
