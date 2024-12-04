@@ -75,7 +75,7 @@ function loadEscenario1() {
     renderer.dispose();
 
     // Cargar la nueva escena
-    import('./newScene.js').then(module => {
+    import('./escenario1.js').then(module => {
         module.initScene(); // Ejecutar la función initScene para inicializar la nueva escena
     }).catch(err => {
         console.error('Error al cargar la nueva escena:', err);
