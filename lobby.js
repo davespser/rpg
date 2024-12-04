@@ -32,7 +32,7 @@ cameraLobby.position.z = 5;
 // Mostrar texto de instrucciones (canvas 2D sobre la escena 3D)
 const lobbyContainer = document.createElement('div');
 lobbyContainer.style.position = 'absolute';
-lobbyContainer.style.top = '10';
+lobbyContainer.style.top = '2';
 lobbyContainer.style.left = '50';
 lobbyContainer.style.width = '100%';
 lobbyContainer.style.height = '100%';
@@ -45,7 +45,7 @@ lobbyContainer.style.color = 'white'; // Texto visible sobre el fondo
 lobbyContainer.style.fontFamily = 'Arial, sans-serif'; // Fuente legible
 lobbyContainer.style.zIndex = '10'; // Asegura que esté sobre el canvas
 lobbyContainer.innerHTML = `
-    <h1>"Bienvenido al RPG de Colores" style="top: 10;"</h1>
+    <h1>Bienvenido al RPG de Colores</h1>
     <div style="position: absolute; bottom: 10px; display: flex; justify-content: center; width: 100%;">
         <button id="start-game-button" style="margin: 5px; padding: 10px 20px; font-size: 12px;">Empezar Juego</button>
         <button id="options-button" style="margin: 5px; padding: 10px 20px; font-size: 12px;">Opciones</button>`;
