@@ -34,6 +34,9 @@ const lobbyContainer = document.createElement('div');
 lobbyContainer.style.position = 'absolute';
 lobbyContainer.style.top = '10%';
 lobbyContainer.style.left = '50%';
+lobbyContainer.style.width = '100%';
+lobbyContainer.style.height = '100%';
+lobbyContainer.style.display = 'flex';
 lobbyContainer.style.transform = 'translate(-50%, -50%)';
 lobbyContainer.style.textAlign = 'center';
 lobbyContainer.style.color = 'white'; // Texto visible sobre el fondo
@@ -42,7 +45,7 @@ lobbyContainer.style.zIndex = '10'; // Asegura que esté sobre el canvas
 lobbyContainer.innerHTML = `
     <h1>Bienvenido al RPG de Colores</h1>
     <button id="start-game-button" style="margin: 5px; bottom: 20px; padding: 10px 20px; font-size: 12px;">Empezar Juego</button>
-    <button id="options-button" style="margin: 5px; padding: 10px 20px; font-size: 13px; position: absolute; top: 50px;">Opciones</button>`;
+    <button id="options-button" style="margin: 5px; padding: 10px 20px; font-size: 13px; position: absolute; bottom: 20px;">Opciones</button>`;
 document.body.appendChild(lobbyContainer);
 
 // Animar el lobby
