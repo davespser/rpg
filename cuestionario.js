@@ -110,7 +110,7 @@ function calculateColorAndStats(answers) {
     const green = Math.min(255, answers.slice(7, 14).reduce((acc, val) => acc + val * 10, 0));
     const blue = Math.min(255, answers.slice(14).reduce((acc, val) => acc + val * 10, 0));
     const colorHex = (red << 16) | (green << 8) | blue;
-metallicMaterial.color.set(colorHex);
+materialQuiz.color.set(colorHex);
     // Calcular estadísticas (20 derivadas del color)
     const total = red + green + blue;
     const statistics = {
