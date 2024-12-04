@@ -79,5 +79,5 @@ function loadEscenario1() {
     script.type = 'module';
     script.src = 'escenario1.js'; // Ruta al nuevo archivo de escena
     document.body.appendChild(script);
-}
+
 });
