@@ -17,6 +17,7 @@ const materialQuiz = new THREE.MeshPhongMaterial( {
      // red (can also use a CSS color 
 // Color inicial: naranja
 const cubeQuiz = new THREE.Mesh(geometryQuiz, materialQuiz);
+cubeQuiz.position.x += 1;
 sceneQuiz.add(cubeQuiz);
 
 cameraQuiz.position.z = 5;
