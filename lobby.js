@@ -41,7 +41,7 @@ lobbyContainer.style.fontFamily = 'Arial, sans-serif'; // Fuente legible
 lobbyContainer.style.zIndex = '10'; // Asegura que esté sobre el canvas
 lobbyContainer.innerHTML = `
     <h1>Bienvenido al RPG de Colores</h1>
-    <button id="start-game-button" style="margin: 5px; padding: 10px 20px; font-size: 16px;">Empezar Juego</button>
+    <button id="start-game-button" style="margin: 5px; top: 50%; padding: 10px 20px; font-size: 16px;">Empezar Juego</button>
     <button id="options-button" style="margin: 5px; padding: 10px 20px; font-size: 16px;">Opciones</button>
 `;
 document.body.appendChild(lobbyContainer);
