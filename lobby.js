@@ -23,7 +23,7 @@ document.body.style.backgroundPosition = "center"; // Centrado
 const geometryLobby = new THREE.BoxGeometry();
 const materialLobby = new THREE.MeshBasicMaterial({ color: 0x007BFF });
 const cubeLobby = new THREE.Mesh(geometryLobby, materialLobby);
-cubeLobby.position.z -= 2;
+cubeLobby.position.z -= 10;
 sceneLobby.add(cubeLobby);
 
 cameraLobby.position.z = 5;
