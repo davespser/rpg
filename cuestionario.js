@@ -21,10 +21,10 @@ sceneQuiz.add(cubeQuiz);
 cameraQuiz.position.z = 5;
 const ambientLight = new THREE.AmbientLight(0x404040); // Luz ambiental
         sceneQuiz.add(ambientLight);
-const directionalLight = new THREE.DirectionalLight(0xffffff, 1); // Luz direccional
+const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5); // Luz direccional
         directionalLight.position.set(5, 5, 5).normalize();
         sceneQuiz.add(directionalLight);
- const pointLight = new THREE.PointLight(0xffffff, 1);
+ const pointLight = new THREE.PointLight(0xffffff, 0.5);
   pointLight.position.set(-5, -5, 5);
   sceneQuiz.add(pointLight);
 const quizContainer = document.createElement('div');
