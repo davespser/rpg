@@ -6,18 +6,12 @@ const cameraQuiz = new THREE.PerspectiveCamera(75, window.innerWidth / window.in
 const geometryQuiz = new THREE.BoxGeometry(); 
 const materialQuiz = new THREE.MeshStandardMaterial( {
 
-    color: 0xffffff,
-
-    roughness: 0,
+    shininess: 100,
     metalness: 1,
+    specular: 0xffffff
+  });
 
-    roughnessMap: 0,
-    metalnessMap: 1,
 
-    envMap: 3, // important -- especially for metals!
-    envMapIntensity: 1
-
-} );
   
      // red (can also use a CSS color 
 // Color inicial: naranja
