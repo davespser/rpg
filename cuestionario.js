@@ -6,8 +6,8 @@ const cameraQuiz = new THREE.PerspectiveCamera(75, window.innerWidth / window.in
 const geometryQuiz = new THREE.BoxGeometry();
 const materialQuiz = new THREE.MeshStandardMaterial({
             color: 0x00ff00,
-            metalness: 0.7,  // Ajustar el nivel de metalicidad
-            roughness: 0.2  // Ajustar la rugosidad
+            metalness: 2.0,  // Ajustar el nivel de metalicidad
+            roughness: 0.1,  // Ajustar la rugosidad
                 }); // Color inicial: naranja
 const cubeQuiz = new THREE.Mesh(geometryQuiz, materialQuiz);
 sceneQuiz.add(cubeQuiz);
