@@ -5,7 +5,7 @@ const light = new THREE.PointLight(0xffffff, 1, 100); // Cielo, suelo, intensida
 light.position.set(5, 5, 5);
 sceneQuiz.add(light);
 const ambientLight = new THREE.AmbientLight(0x404040, 1); // Soft white light
-    scene.add(ambientLight);
+    sceneQuiz.add(ambientLight);
 // Crear un cubo diferente para la escena del cuestionario
 const geometryQuiz = new THREE.BoxGeometry();
 const materialQuiz = new THREE.MeshPhongMaterial({ color: 0x0077ff,      // Base color (blue)
