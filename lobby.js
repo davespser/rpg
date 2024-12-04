@@ -1,4 +1,4 @@
-// Escena del Lobby
+import * as THREE from 'three';// Escena del Lobby
 const sceneLobby = new THREE.Scene();
 const cameraLobby = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({ antialias: true });
