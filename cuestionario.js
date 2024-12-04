@@ -6,8 +6,8 @@ const cameraQuiz = new THREE.PerspectiveCamera(75, window.innerWidth / window.in
 const geometryQuiz = new THREE.BoxGeometry(); 
 const materialQuiz = new THREE.MeshStandardMaterial( {
 
-    shininess: 100,
-    metalness: 1,
+    shininess: 150,
+    metalness: 2,
     specular: 0xffffff
   });
 
@@ -19,7 +19,7 @@ const cubeQuiz = new THREE.Mesh(geometryQuiz, materialQuiz);
 sceneQuiz.add(cubeQuiz);
 
 cameraQuiz.position.z = 5;
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // Luz ambiental
+const ambientLight = new THREE.AmbientLight(0xffffff, 1); // Luz ambiental
         sceneQuiz.add(ambientLight);
 const directionalLight = new THREE.DirectionalLight(0xffffff, 1); // Luz direccional
         directionalLight.position.set(5, 5, 5).normalize();
