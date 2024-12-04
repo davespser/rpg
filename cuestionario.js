@@ -7,17 +7,17 @@ const geometryQuiz = new THREE.BoxGeometry();
 const materialQuiz = new THREE.MeshStandardMaterial({
             color: 0x00ff00,
             metalness: 2.0,  // Ajustar el nivel de metalicidad
-            roughness: 0.1,  // Ajustar la rugosidad
+            roughness: 0.1  // Ajustar la rugosidad
                 }); // Color inicial: naranja
 const cubeQuiz = new THREE.Mesh(geometryQuiz, materialQuiz);
 sceneQuiz.add(cubeQuiz);
 
 cameraQuiz.position.z = 5;
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // Luz ambiental
-        scene.add(ambientLight);
+        sceneQuiz.add(ambientLight);
 const directionalLight = new THREE.DirectionalLight(0xffffff, 1); // Luz direccional
         directionalLight.position.set(5, 5, 5).normalize();
-        scene.add(directionalLight);
+        sceneQuiz.add(directionalLight);
 // Contenedor del cuestionario
 const quizContainer = document.createElement('div');
 quizContainer.style.position = 'absolute';
