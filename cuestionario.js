@@ -5,10 +5,10 @@ const cameraQuiz = new THREE.PerspectiveCamera(75, window.innerWidth / window.in
 // Crear un cubo con material MeshPhong
 const geometryQuiz = new THREE.BoxGeometry();
 const materialQuiz = new THREE.MeshPhongMaterial({
-    shininess: 1024,
-    reflectivity: 0.7,
+    shininess: 150,
+    reflectivity: 1,
     specular: 0xffffff,
-    color: 0xffa500 // Naranja inicial
+    color: 0x0000ff// Naranja inicial
 });
 const cubeQuiz = new THREE.Mesh(geometryQuiz, materialQuiz);
 cubeQuiz.position.x += 1;
