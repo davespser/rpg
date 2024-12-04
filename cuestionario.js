@@ -1,7 +1,7 @@
 // Escena del Cuestionario
 const sceneQuiz = new THREE.Scene();
 const cameraQuiz = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-const light = new THREE.pointLight(0xffffff, 1, 100); // Cielo, suelo, intensidad
+const light = new THREE.PointLight(0xffffff, 1, 100); // Cielo, suelo, intensidad
 light.position.set(5, 5, 5);
 sceneQuiz.add(light);
 const ambientLight = new THREE.AmbientLight(0x404040, 1); // Soft white light
