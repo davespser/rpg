@@ -23,8 +23,9 @@ document.body.style.backgroundPosition = "center"; // Centrado
 const geometryLobby = new THREE.BoxGeometry();
 const materialLobby = new THREE.MeshBasicMaterial({ color: 0x007BFF });
 const cubeLobby = new THREE.Mesh(geometryLobby, materialLobby);
+cubeLobby.position.z -= 2;
 sceneLobby.add(cubeLobby);
-cubeLobby.position.z = -1;
+
 cameraLobby.position.z = 5;
 
 // Mostrar texto de instrucciones (canvas 2D sobre la escena 3D)
