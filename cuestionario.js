@@ -21,8 +21,10 @@ cameraQuiz.position.z = 5;
 const ambientLight = new THREE.AmbientLight(0x404040); // Luz ambiental tenue
 sceneQuiz.add(ambientLight);
 
-const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5); // Luz direccional
-directionalLight.position.set(5, 5, 5).normalize();
+
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+directionalLight.position.set(5, 5, 5); // Posición de la luz
+directionalLight.target = cubeQúiz;        // Hacer que apunte al cubo
 sceneQuiz.add(directionalLight);
 
 const hemisphereLight = new THREE.HemisphereLight(0x6495ED, 0xffcc00, 0.5); // Luz hemisférica
