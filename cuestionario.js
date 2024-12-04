@@ -25,14 +25,14 @@ const ambientLight = new THREE.AmbientLight(0x404040); // Luz ambiental
 const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5); // Luz direccional
         directionalLight.position.set(5, 5, 5).normalize();
         sceneQuiz.add(directionalLight);
- const pointLight = new THREE.PointLight(0xffffff, 0.5);
-  pointLight.position.set(-5, -5, 5);
-  sceneQuiz.add(pointLight);
+ const pointLight = new THREE.HemisphereLight(0x6495ED, 0.5);
+  HemisphereLight.position.set(-5, -5, 5);
+  sceneQuiz.add(HemisphereLight);
 const quizContainer = document.createElement('div');
 quizContainer.style.position = 'absolute';
 quizContainer.style.top = '0';
 quizContainer.style.left = '0';
-quizContainer.style.width = '100px';
+quizContainer.style.width = '80px';
 quizContainer.style.background = 'rgba(255, 255, 255, 0.9)';
 quizContainer.style.padding = '20px';
 quizContainer.style.borderRadius = '10px';
