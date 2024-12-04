@@ -4,7 +4,6 @@ const cameraQuiz = new THREE.PerspectiveCamera(75, window.innerWidth / window.in
 
 // Crear un cubo diferente para la escena del cuestionario
 const geometryQuiz = new THREE.BoxGeometry(); 
-geometryQuiz.position.x += 1;
 const materialQuiz = new THREE.MeshPhongMaterial( {
 
     shininess: 1024,
@@ -46,7 +45,7 @@ quizContainer.innerHTML = `
         <button type="submit">Calcular Color</button>
     </form>
 `;
-quizContainer.style.display = 'none';
+quizContainer.style.display = 'block';
 document.body.appendChild(quizContainer);
 
 // Función para generar las 20 preguntas dinámicamente
