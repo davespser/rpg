@@ -69,3 +69,15 @@ document.getElementById('start-game-button').addEventListener('click', () => {
 document.getElementById('options-button').addEventListener('click', () => {
     loadEscenario1();
 });
+
+function loadEscenario1() {
+    // Eliminar el renderizador del lobby (si es necesario)
+    renderer.dispose();
+
+    // Cargar la nueva escena
+    const script = document.createElement('script');
+    script.type = 'module';
+    script.src = 'escenario1.js'; // Ruta al nuevo archivo de escena
+    document.body.appendChild(script);
+}
+});
