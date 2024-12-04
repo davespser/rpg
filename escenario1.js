@@ -21,11 +21,11 @@ const material1 = new THREE.MeshPhongMaterial({ color: 0x007BFF });
 const cube1 = new THREE.Mesh(geometry1, material1);
 scene1.add(cube1);
 function loadescenario1() {
-    quizContainer.style.display = 'block';
+    scene1Container.style.display = 'block';
     renderer.setAnimationLoop(() => {
-        cubeQuiz.rotation.x += 0.01;
-        cubeQuiz.rotation.y += 0.01;
-        renderer.render(sceneQuiz, cameraQuiz);
+        cube1.rotation.x += 0.01;
+        cube1.rotation.y += 0.01;
+        renderer.render(scene1, camera1);
     });
 }
 function animateScene1() {
