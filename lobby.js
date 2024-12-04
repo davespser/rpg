@@ -67,6 +67,7 @@ document.getElementById('start-game-button').addEventListener('click', () => {
 });
 
 document.getElementById('options-button').addEventListener('click', () => {
+    lobbyContainer.style.display = 'none';
     loadEscenario1();
 });
 
