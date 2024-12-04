@@ -6,7 +6,8 @@ const cameraQuiz = new THREE.PerspectiveCamera(75, window.innerWidth / window.in
 const geometryQuiz = new THREE.BoxGeometry(); 
 const materialQuiz = new THREE.MeshPhongMaterial( {
 
-    shininess: 150,
+    shininess: 1024,
+    reflectivity: 0.7,
     specular: 0xffffff
   });
 
