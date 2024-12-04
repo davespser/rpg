@@ -29,8 +29,8 @@ const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5); // Luz direc
   sceneQuiz.add(pointLight);
 const quizContainer = document.createElement('div');
 quizContainer.style.position = 'absolute';
-quizContainer.style.top = '10%';
-quizContainer.style.left = '10%';
+quizContainer.style.top = '0';
+quizContainer.style.left = '0';
 quizContainer.style.background = 'rgba(255, 255, 255, 0.9)';
 quizContainer.style.padding = '20px';
 quizContainer.style.borderRadius = '10px';
@@ -43,7 +43,7 @@ quizContainer.innerHTML = `
         <button type="submit">Calcular Color</button>
     </form>
 `;
-quizContainer.style.display = 'none';
+quizContainer.style.display = 'column';
 document.body.appendChild(quizContainer);
 
 // Función para generar las 20 preguntas dinámicamente
