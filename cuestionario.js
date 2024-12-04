@@ -4,11 +4,10 @@ const cameraQuiz = new THREE.PerspectiveCamera(75, window.innerWidth / window.in
 
 // Crear un cubo diferente para la escena del cuestionario
 const geometryQuiz = new THREE.BoxGeometry();
-const materialQuiz = new THREE.MeshStandardMaterial({
-            color: 0x007BFF,
-            metalness: 0.7,  // Ajustar el nivel de metalicidad
-            roughness: 0.2  // Ajustar la rugosidad
-                }); // Color inicial: naranja
+const materialQuiz = const material = new THREE.MeshPhongMaterial({
+  color: 0xFF0000,    // red (can also use a CSS color string here)
+  flatShading: true,
+}); // Color inicial: naranja
 const cubeQuiz = new THREE.Mesh(geometryQuiz, materialQuiz);
 sceneQuiz.add(cubeQuiz);
 
