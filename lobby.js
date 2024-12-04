@@ -11,7 +11,7 @@ document.body.appendChild(renderer.domElement);
 // Fondo del lobby con la imagen "roman.jpg"
 document.body.style.margin = "0"; // Elimina márgenes
 document.body.style.overflow = "hidden"; // Evita scroll
-document.body.style.backgroundImage = "url('roman.jpg')"; // Ruta de la imagen
+document.body.style.backgroundImage = "url('./roman.jpg')"; // Ruta de la imagen
 document.body.style.backgroundSize = "cover"; // Que la imagen cubra todo el fondo
 document.body.style.backgroundPosition = "center"; // Centrado
 
