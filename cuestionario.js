@@ -6,8 +6,10 @@ hemiLight.position.set(0, 20, 0);
 sceneQuiz.add(hemiLight);
 // Crear un cubo diferente para la escena del cuestionario
 const geometryQuiz = new THREE.BoxGeometry();
-const materialQuiz = new THREE.MeshStandardMaterial({ color: 0xFF5722, metalness: 0.8,
-    roughness: 0.2,}); // Color inicial: naranja
+const materialQuiz = new THREE.MeshPhongMaterial({ color: 0x0077ff,      // Base color (blue)
+            specular: 0x555555,   // Specular color (metallic shine)
+            shininess: 100,       // The shininess factor (controls how shiny the surface is)
+        }); // Color inicial: naranja
 const cubeQuiz = new THREE.Mesh(geometryQuiz, materialQuiz);
 sceneQuiz.add(cubeQuiz);
 
