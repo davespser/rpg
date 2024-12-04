@@ -31,6 +31,7 @@ const quizContainer = document.createElement('div');
 quizContainer.style.position = 'absolute';
 quizContainer.style.top = '0';
 quizContainer.style.left = '0';
+quizContainer.style.width = '100px';
 quizContainer.style.background = 'rgba(255, 255, 255, 0.9)';
 quizContainer.style.padding = '20px';
 quizContainer.style.borderRadius = '10px';
@@ -43,7 +44,7 @@ quizContainer.innerHTML = `
         <button type="submit">Calcular Color</button>
     </form>
 `;
-quizContainer.style.display = 'column';
+quizContainer.style.display = 'none';
 document.body.appendChild(quizContainer);
 
 // Función para generar las 20 preguntas dinámicamente
