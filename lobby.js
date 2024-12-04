@@ -67,7 +67,7 @@ document.getElementById('start-game-button').addEventListener('click', () => {
 });
 
 document.getElementById('options-button').addEventListener('click', () => {
-    loadescenario1();
+    loadEscenario1();
 });
 
 function loadEscenario1() {
@@ -75,9 +75,9 @@ function loadEscenario1() {
     renderer.dispose();
 
     // Cargar la nueva escena
-    const script = document.createElement('script');
-    script.type = 'module';
-    script.src = 'escenario1.js'; // Ruta al nuevo archivo de escena
-    document.body.appendChild(script);
-
+    import('./newScene.js').then(module => {
+        module.initScene(); // Ejecutar la función initScene para inicializar la nueva escena
+    }).catch(err => {
+        console.error('Error al cargar la nueva escena:', err);
+    });
 }
