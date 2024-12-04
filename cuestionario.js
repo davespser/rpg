@@ -7,7 +7,6 @@ const geometryQuiz = new THREE.BoxGeometry();
 const materialQuiz = new THREE.MeshPhongMaterial( {
 
     shininess: 150,
-    metalness: 1,
     specular: 0xffffff
   });
 
