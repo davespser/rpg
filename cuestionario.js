@@ -25,7 +25,7 @@ const directionalLight = new THREE.DirectionalLight(0xffffff, 1); // Luz direcci
         sceneQuiz.add(directionalLight);
  const pointLight = new THREE.PointLight(0xffffff, 1);
   pointLight.position.set(-5, -5, 5);
-  scene.add(pointLight);
+  sceneQuiz.add(pointLight);
 const quizContainer = document.createElement('div');
 quizContainer.style.position = 'absolute';
 quizContainer.style.top = '10%';
