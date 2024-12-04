@@ -80,4 +80,4 @@ function loadEscenario1() {
     script.src = 'escenario1.js'; // Ruta al nuevo archivo de escena
     document.body.appendChild(script);
 
-});
+}
