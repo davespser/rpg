@@ -5,17 +5,6 @@ const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-// Cargar la textura de la imagen de fondo
-const textureLoader = new THREE.TextureLoader();
-const backgroundTexture = textureLoader.load('roman.jpg');
-
-// Crear el plano de fondo
-const planeGeometry = new THREE.PlaneGeometry(20, 10); // Ajusta el tamaño según sea necesario
-const planeMaterial = new THREE.MeshBasicMaterial({ map: backgroundTexture });
-const backgroundPlane = new THREE.Mesh(planeGeometry, planeMaterial);
-backgroundPlane.position.z = -5; // Ajusta la posición en profundidad
-sceneLobby.add(backgroundPlane);
-
 // Crear el cubo de la escena del lobby
 const geometryLobby = new THREE.BoxGeometry();
 const materialLobby = new THREE.MeshBasicMaterial({ color: 0x007BFF });
@@ -24,25 +13,26 @@ sceneLobby.add(cubeLobby);
 
 cameraLobby.position.z = 5;
 
+// Añadir imagen de fondo usando CSS
+document.body.style.backgroundImage = "url('roman.jpg')"; // Ruta a tu imagen
+document.body.style.backgroundSize = "cover"; // Para que cubra todo el fondo
+document.body.style.backgroundPosition = "center"; // Centrado
+document.body.style.margin = "0";
+document.body.style.overflow = "hidden"; // Evitar scroll
+
 // Mostrar texto de instrucciones (canvas 2D sobre la escena 3D)
 const lobbyContainer = document.createElement('div');
-// ... (resto del código para mostrar el texto de instrucciones)
-
-// Función para cargar una nueva escena
-function loadScene(sceneFile) {
-    // Eliminar la escena actual (opcional)
-    while (sceneLobby.children.length > 0) {
-        sceneLobby.remove(sceneLobby.children[0]);
-    }
-
-    // Cargar la nueva escena (ejemplo usando un módulo de carga de escenas)
-    import(`./${sceneFile}.js`).then(module => {
-        sceneLobby.add(module.scene);
-        // ... (otras configuraciones de la nueva escena)
-    }).catch(error => {
-        console.error('Error al cargar la escena:', error);
-    });
-}
+lobbyContainer.style.position = 'absolute';
+lobbyContainer.style.top = '50%';
+lobbyContainer.style.left = '50%';
+lobbyContainer.style.transform = 'translate(-50%, -50%)';
+lobbyContainer.style.textAlign = 'center';
+lobbyContainer.innerHTML = `
+    <h1>Bienvenido al RPG de Colores</h1>
+    <button id="start-game-button">Empezar Juego</button>
+    <button id="options-button">Opciones</button>
+`;
+document.body.appendChild(lobbyContainer);
 
 // Animar el lobby
 function animateLobby() {
@@ -57,9 +47,9 @@ animateLobby();
 document.getElementById('start-game-button').addEventListener('click', () => {
     // Cambiar a la escena del cuestionario
     lobbyContainer.style.display = 'none';
-    loadScene('cuestionario');
+    loadQuizScene();
 });
 
 document.getElementById('options-button').addEventListener('click', () => {
-    loadScene('opciones');
+    alert("Opciones: Aún no implementado.");
 });
