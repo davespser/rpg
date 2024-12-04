@@ -6,7 +6,7 @@ const cameraQuiz = new THREE.PerspectiveCamera(75, window.innerWidth / window.in
 const geometryQuiz = new THREE.SphereGeometry( 15, 32, 16 ); 
 const materialQuiz = new THREE.MeshPhongMaterial({
   color: 0xFF0000, specular: 0xffffff,
-  shininess: 200,   // red (can also use a CSS color string here)
+  shininess: 150,   // red (can also use a CSS color string here)
   flatShading: true,
 }); // Color inicial: naranja
 const cubeQuiz = new THREE.Mesh(geometryQuiz, materialQuiz);
