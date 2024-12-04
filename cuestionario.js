@@ -2,47 +2,50 @@
 const sceneQuiz = new THREE.Scene();
 const cameraQuiz = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
-// Crear un cubo diferente para la escena del cuestionario
-const geometryQuiz = new THREE.BoxGeometry(); 
-const materialQuiz = new THREE.MeshPhongMaterial( {
-
+// Crear un cubo con material MeshPhong
+const geometryQuiz = new THREE.BoxGeometry();
+const materialQuiz = new THREE.MeshPhongMaterial({
     shininess: 1024,
     reflectivity: 0.7,
-    specular: 0xffffff
-  });
-
-
-  
-     // red (can also use a CSS color 
-// Color inicial: naranja
+    specular: 0xffffff,
+    color: 0xffa500 // Naranja inicial
+});
 const cubeQuiz = new THREE.Mesh(geometryQuiz, materialQuiz);
 cubeQuiz.position.x += 1;
 sceneQuiz.add(cubeQuiz);
 
+// Configurar cámara
 cameraQuiz.position.z = 5;
-const ambientLight = new THREE.AmbientLight(0x404040); // Luz ambiental
-        sceneQuiz.add(ambientLight);
+
+// Añadir iluminación a la escena
+const ambientLight = new THREE.AmbientLight(0x404040); // Luz ambiental tenue
+sceneQuiz.add(ambientLight);
+
 const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5); // Luz direccional
-        directionalLight.position.set(5, 5, 5).normalize();
-        sceneQuiz.add(directionalLight);
- const pointLight = new THREE.HemisphereLight(0x6495ED, 0.5);
-  HemisphereLight.position.set(-5, -5, 5);
-  sceneQuiz.add(HemisphereLight);
+directionalLight.position.set(5, 5, 5).normalize();
+sceneQuiz.add(directionalLight);
+
+const hemisphereLight = new THREE.HemisphereLight(0x6495ED, 0xffcc00, 0.5); // Luz hemisférica
+sceneQuiz.add(hemisphereLight);
+
+// Crear contenedor para el cuestionario
 const quizContainer = document.createElement('div');
 quizContainer.style.position = 'absolute';
-quizContainer.style.top = '0';
-quizContainer.style.left = '0';
-quizContainer.style.width = '80px';
+quizContainer.style.top = '10px';
+quizContainer.style.left = '10px';
+quizContainer.style.width = '80%';
 quizContainer.style.background = 'rgba(255, 255, 255, 0.9)';
-quizContainer.style.padding = '20px';
+quizContainer.style.padding = '10px';
 quizContainer.style.borderRadius = '10px';
 quizContainer.style.overflowY = 'auto';
-quizContainer.style.maxHeight = '80vh';
+quizContainer.style.maxHeight = '70vh';
+quizContainer.style.fontSize = '12px'; // Reducir tamaño de fuente
+quizContainer.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)';
 quizContainer.innerHTML = `
-    <h3>Descubre tu color</h3>
+    <h3 style="text-align: center; margin-top: 0;">Descubre tu color</h3>
     <form id="quiz-form">
         ${generateQuestions()}
-        <button type="submit">Calcular Color</button>
+        <button type="submit" style="margin-top: 10px;">Calcular Color</button>
     </form>
 `;
 quizContainer.style.display = 'block';
@@ -87,12 +90,9 @@ function animateQuiz() {
     renderer.render(sceneQuiz, cameraQuiz);
 }
 
-// Función para cambiar de escena al cuestionario
+// Función para cambiar a la escena del cuestionario
 function loadQuizScene() {
-    // Mostrar el cuestionario
     quizContainer.style.display = 'block';
-
-    // Cambiar a la escena del cuestionario
     renderer.setAnimationLoop(() => {
         cubeQuiz.rotation.x += 0.01;
         cubeQuiz.rotation.y += 0.01;
@@ -104,12 +104,10 @@ function loadQuizScene() {
 document.body.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    // Procesar las respuestas
     const formData = new FormData(event.target);
     const answers = Array.from(formData.values()).map(val => parseInt(val, 10));
     const { colorHex, statistics } = calculateColorAndStats(answers);
 
-    // Actualizar el color del cubo en la escena del cuestionario
     materialQuiz.color.set(colorHex);
 
     alert(`
@@ -119,15 +117,13 @@ document.body.addEventListener('submit', (event) => {
     `);
 });
 
-// Calcular el color y las estadísticas basado en respuestas
+// Calcular color y estadísticas
 function calculateColorAndStats(answers) {
-    // Calcular RGB
     const red = Math.min(255, answers.slice(0, 7).reduce((acc, val) => acc + val * 10, 0));
     const green = Math.min(255, answers.slice(7, 14).reduce((acc, val) => acc + val * 10, 0));
     const blue = Math.min(255, answers.slice(14).reduce((acc, val) => acc + val * 10, 0));
     const colorHex = (red << 16) | (green << 8) | blue;
 
-    // Calcular estadísticas (20 derivadas del color)
     const total = red + green + blue;
     const statistics = {
         Fuerza: red / 255 * 100,
@@ -136,20 +132,7 @@ function calculateColorAndStats(answers) {
         Resistencia: (red + green) / (2 * 255) * 100,
         Percepción: (green + blue) / (2 * 255) * 100,
         Carisma: (red + blue) / (2 * 255) * 100,
-        Vitalidad: total / (3 * 255) * 100,
-        Precisión: red / total * 100,
-        Sigilo: green / total * 100,
-        Sabiduría: blue / total * 100,
-        Energía: (red * 0.6 + green * 0.3 + blue * 0.1) / 255 * 100,
-        Destreza: (red * 0.3 + green * 0.6 + blue * 0.1) / 255 * 100,
-        Creatividad: (red * 0.1 + green * 0.3 + blue * 0.6) / 255 * 100,
-        Control: green / (red + blue + 1) * 100,
-        Adaptabilidad: blue / (red + green + 1) * 100,
-        Estrategia: red / (blue + green + 1) * 100,
-        Resiliencia: (green - blue) / 255 * 100,
-        Persuasión: (red - green) / 255 * 100,
-        Serenidad: (blue - red) / 255 * 100,
-        Caos: (red + green - blue) / (3 * 255) * 100
+        Vitalidad: total / (3 * 255) * 100
     };
 
     return { colorHex, statistics };
