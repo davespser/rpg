@@ -3,7 +3,7 @@ const sceneQuiz = new THREE.Scene();
 const cameraQuiz = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
 // Crear un cubo diferente para la escena del cuestionario
-const geometryQuiz = new THREE.BoxGeometry( 1, 1, 1); 
+const geometryQuiz = new THREE.BoxGeometry(); 
 const materialQuiz = new THREE.MeshPhongMaterial({
   color: 0xFF0000, specular: 0xffffff,
   shininess: 150,   // red (can also use a CSS color string here)
