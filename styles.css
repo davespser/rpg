@@ -169,8 +169,10 @@ body {
 
     /* Ajustes del cuestionario */
     #quiz-container {
-        max-width: 280px; /* Hacer el cuestionario aún más pequeño en pantallas pequeñas */
-        padding: 8px; /* Reducir padding */
+        max-width: 768px;
+        width: 250px;/* Hacer el cuestionario aún más pequeño en pantallas pequeñas */
+        padding: 8px; 
+        heigth: 100vh;/* Reducir padding */
     }
 
     #quiz-container h3 {
