@@ -12,6 +12,23 @@
 <body>
     <div id="container"></div>
     <div id="clock">00:00:00</div>
-    <script type="module" src="lobby.js"></script>
+    <script type="module">
+        import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.171.0/+esm';
+        import { initScene } from './newScene.js';
+
+        document.getElementById('options-button').addEventListener('click', () => {
+            loadEscenario1();
+        });
+
+        function loadEscenario1() {
+            renderer.dispose();
+
+            import('./newScene.js').then(module => {
+                module.initScene();
+            }).catch(err => {
+                console.error('Error al cargar la nueva escena:', err);
+            });
+        }
+    </script>
 </body>
 </html>
