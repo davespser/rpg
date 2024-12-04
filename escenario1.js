@@ -1,4 +1,4 @@
-
+export function initScene() {
 const scene1 = new THREE.Scene();
 
 // Crear la cámara
@@ -68,4 +68,5 @@ function updateClock() {
     clock.textContent = `${hours}:${minutes}:${seconds}`;
 }
 setInterval(updateClock, 1000);
-updateClock();; // Actualizar inmediatamente al cargar la página
+updateClock();// Actualizar inmediatamente al cargar la página
+}
