@@ -4,7 +4,7 @@ const cameraLobby = new THREE.PerspectiveCamera(75, window.innerWidth / window.i
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 const loader = new THREE.TextureLoader();
 loader.load('./roman.jpg', function (texture) {
-    scene.background = texture;
+    sceneLobby.background = texture;
 });
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.domElement.style.position = "absolute";
