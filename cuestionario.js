@@ -1,32 +1,33 @@
 // Escena del Cuestionario
 const sceneQuiz = new THREE.Scene();
 const cameraQuiz = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-const light = new THREE.PointLight(0xffffff, 1, 100); // Cielo, suelo, intensidad
-light.position.set(5, 5, 5);
-sceneQuiz.add(light);
-const ambientLight = new THREE.AmbientLight(0x404040, 1); // Soft white light
-    sceneQuiz.add(ambientLight);
+
 // Crear un cubo diferente para la escena del cuestionario
 const geometryQuiz = new THREE.BoxGeometry();
-const materialQuiz = new THREE.MeshPhongMaterial({ color: 0x0077ff,      // Base color (blue)
-            specular: 0x555555,   // Specular color (metallic shine)
-            shininess: 100,       // The shininess factor (controls how shiny the surface is)
-        }); // Color inicial: naranja
+const materialQuiz = new THREE.MeshStandardMaterial({
+            color: 0x00ff00,
+            metalness: 0.7,  // Ajustar el nivel de metalicidad
+            roughness: 0.2  // Ajustar la rugosidad
+                }); // Color inicial: naranja
 const cubeQuiz = new THREE.Mesh(geometryQuiz, materialQuiz);
 sceneQuiz.add(cubeQuiz);
 
 cameraQuiz.position.z = 5;
-
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // Luz ambiental
+        scene.add(ambientLight);
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1); // Luz direccional
+        directionalLight.position.set(5, 5, 5).normalize();
+        scene.add(directionalLight);
 // Contenedor del cuestionario
 const quizContainer = document.createElement('div');
 quizContainer.style.position = 'absolute';
-quizContainer.style.top = '5%';
-quizContainer.style.left = '5%';
+quizContainer.style.top = '10%';
+quizContainer.style.left = '10%';
 quizContainer.style.background = 'rgba(255, 255, 255, 0.9)';
 quizContainer.style.padding = '20px';
 quizContainer.style.borderRadius = '10px';
 quizContainer.style.overflowY = 'auto';
-quizContainer.style.maxHeight = '60vh';
+quizContainer.style.maxHeight = '80vh';
 quizContainer.innerHTML = `
     <h3>Descubre tu color</h3>
     <form id="quiz-form">
@@ -98,7 +99,7 @@ document.body.addEventListener('submit', (event) => {
     const { colorHex, statistics } = calculateColorAndStats(answers);
 
     // Actualizar el color del cubo en la escena del cuestionario
-    
+    materialQuiz.color.set(colorHex);
 
     alert(`
         ¡Tu color es: #${colorHex.toString(16).padStart(6, '0').toUpperCase()}!
@@ -114,7 +115,7 @@ function calculateColorAndStats(answers) {
     const green = Math.min(255, answers.slice(7, 14).reduce((acc, val) => acc + val * 10, 0));
     const blue = Math.min(255, answers.slice(14).reduce((acc, val) => acc + val * 10, 0));
     const colorHex = (red << 16) | (green << 8) | blue;
-materialQuiz.color.set(colorHex);
+
     // Calcular estadísticas (20 derivadas del color)
     const total = red + green + blue;
     const statistics = {
