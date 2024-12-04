@@ -22,7 +22,14 @@ const geometry = new THREE.BoxGeometry();
 const material = new THREE.MeshPhongMaterial({ color: 0x007BFF });
 const cube = new THREE.Mesh(geometry, material);
 scene.add(cube);
-
+function loadescenario1() {
+    quizContainer.style.display = 'block';
+    renderer.setAnimationLoop(() => {
+        cubeQuiz.rotation.x += 0.01;
+        cubeQuiz.rotation.y += 0.01;
+        renderer.render(sceneQuiz, cameraQuiz);
+    });
+}
 // Función de animación
 function animate() {
     requestAnimationFrame(animate);
