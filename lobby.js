@@ -28,6 +28,22 @@ cameraLobby.position.z = 5;
 const lobbyContainer = document.createElement('div');
 // ... (resto del código para mostrar el texto de instrucciones)
 
+// Función para cargar una nueva escena
+function loadScene(sceneFile) {
+    // Eliminar la escena actual (opcional)
+    while (sceneLobby.children.length > 0) {
+        sceneLobby.remove(sceneLobby.children[0]);
+    }
+
+    // Cargar la nueva escena (ejemplo usando un módulo de carga de escenas)
+    import(`./${sceneFile}.js`).then(module => {
+        sceneLobby.add(module.scene);
+        // ... (otras configuraciones de la nueva escena)
+    }).catch(error => {
+        console.error('Error al cargar la escena:', error);
+    });
+}
+
 // Animar el lobby
 function animateLobby() {
     requestAnimationFrame(animateLobby);
@@ -38,4 +54,12 @@ function animateLobby() {
 animateLobby();
 
 // Manejar eventos de los botones
-// ... (resto del código para manejar los botones)
+document.getElementById('start-game-button').addEventListener('click', () => {
+    // Cambiar a la escena del cuestionario
+    lobbyContainer.style.display = 'none';
+    loadScene('cuestionario');
+});
+
+document.getElementById('options-button').addEventListener('click', () => {
+    loadScene('opciones');
+});
