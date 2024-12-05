@@ -67,8 +67,10 @@ document.getElementById('options-button').addEventListener('click', () => {
 
 // Cargar Cuestionario
 function loadCuestionario() {
+    clearScene(); // Limpia el contenido anterior
     const script = document.createElement('script');
     script.src = './js/cuestionario.js';
+    script.onload = () => initCuestionario(renderer); // Pasa el renderer
     document.body.appendChild(script);
 }
 
