@@ -64,6 +64,16 @@ document.getElementById('options-button').addEventListener('click', () => {
     lobbyContainer.style.display = 'none'; // Ocultar Lobby
     loadEscenario1(); // Cargar Escenario 1
 });
+function clearScene() {
+    // Elimina el canvas existente
+    const existingCanvas = document.querySelector('canvas');
+    if (existingCanvas) {
+        existingCanvas.remove();
+    }
+
+    // Limpia elementos HTML previos
+    document.body.innerHTML = "";
+}
 
 // Cargar Cuestionario
 function loadCuestionario() {
