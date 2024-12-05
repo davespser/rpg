@@ -1,5 +1,4 @@
-import * as THREE from 'three';
-export function initScene() {
+
 const scene1 = new THREE.Scene();
 
 // Crear la cámara
