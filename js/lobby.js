@@ -7,7 +7,7 @@ export function initLobby(renderer, camera, switchScene) {
 
     // Fondo de la escena
     const loader = new THREE.TextureLoader();
-    loader.load('./assets/images/roman.jpg'), texture => {
+    loader.load('./assets/images/roman.jpg', texture => {
         sceneLobby.background = texture;
     });
 
