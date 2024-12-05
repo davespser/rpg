@@ -77,10 +77,19 @@ function clearScene() {
 
 // Cargar Cuestionario
 function loadCuestionario() {
-    clearScene(); // Limpia el contenido anterior
+    clearScene(); // Limpia el contenido de la escena anterior (ej. lobby)
+    
+    // Cargar el script de cuestionario.js
     const script = document.createElement('script');
-    script.src = './js/cuestionario.js';
-    script.onload = () => initCuestionario(renderer); // Pasa el renderer
+    script.src = './js/cuestionario.js'; // Asegúrate de que la ruta sea correcta
+    script.onload = () => {
+        // Llamar a la función initCuestionario después de que el script se haya cargado
+        if (typeof initCuestionario === 'function') {
+            initCuestionario(renderer); // Inicializa el cuestionario con el renderer
+        } else {
+            console.error('La función initCuestionario no está definida');
+        }
+    };
     document.body.appendChild(script);
 }
 
