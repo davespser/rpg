@@ -1,17 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juego RPG</title>
+    <title>Lobby</title>
     <style>
         body { margin: 0; overflow: hidden; }
-        canvas { display: block; }
+        #container { position: relative; width: 100%; height: 100vh; }
     </style>
-    <!-- CDN de Three.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.138.3/three.min.js"></script>
 </head>
 <body>
-    <script src="./js/lobby.js"></script>
+    <div id="container"></div>
+    <div id="clock">00:00:00</div>
+    <script type="module">
+        import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.171.0/+esm';
+        import { initScene } from './newScene.js';
+
+        document.getElementById('options-button').addEventListener('click', () => {
+            loadEscenario1();
+        });
+
+        function loadEscenario1() {
+            renderer.dispose();
+
+            import('./newScene.js').then(module => {
+                module.initScene();
+            }).catch(err => {
+                console.error('Error al cargar la nueva escena:', err);
+            });
+        }
+    </script>
 </body>
 </html>
