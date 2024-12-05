@@ -138,4 +138,14 @@ function calculateColorAndStats(answers) {
     };
 
     return { colorHex, statistics };
+
+    export function initCuestionario(renderer) {
+    // Aquí va el código de inicialización
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    // Lógica del cuestionario
+    loadQuizScene();
+    animateQuiz();
+    }
 }
